@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>지역검색활용</title>
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+    <script src = "node_modules/axios/dist/axios.min.js"></script>
+    
+</head>
+<body>
+    <input type = "text" id = "inputValue">
+    <input type="button" value="확인" onclick="api()">
+    
+    <script>
+        function api() {
+            axios
+            .get("http://localhost:3000",{
+                params: {
+                    query: document.getElementById('inputValue').value,
+                    display: 3
+                }
+            })
+            .then(function (result) {
+                console.log("통신 결과 : ", result);
+                console.log("status : ", result.status);
+                console.log("data : ", result.data);
+                alert(result.data);
+            })
+            .catch(function (error) {
+                console.log("에러 발생 : ", error);
+            });
+        }
+    </script>
+    <!-- <script>document.write(res.data)</script> -->
+</body>
+</html>
+
