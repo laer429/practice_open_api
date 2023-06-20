@@ -43,17 +43,12 @@ app.get('/', async (req, res) => {
         titles = res.data['items'].map(element => element['title']);
         console.log('titles:',titles);
         
-    // 오류나면 오류메시지
     } catch(error) {
         console.error(error);
     }
     res.send(titles);
 }); 
 
-// 'localhost:3000/test'의 req(요청받는값),res(응답값) 설정
-app.get('/test1', async function (req, res){
-    res.json({message:'babo'});
-});
 
 
 app.listen(port, () => {
